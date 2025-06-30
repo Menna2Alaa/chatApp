@@ -11,7 +11,9 @@ plugins {
 android {
     namespace = "com.example.scholar_chat_app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    
+    
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -32,7 +34,7 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         minSdkVersion(23)   
-        multiDexEnabled true 
+        multiDexEnabled = true 
     }
 
     buildTypes {

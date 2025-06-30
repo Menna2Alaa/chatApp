@@ -1,9 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:scholar_chat_app/cubits/chatCubit/chat_cubit.dart';
+import 'package:scholar_chat_app/cubits/loginCubit/login_cubit.dart';
+import 'package:scholar_chat_app/cubits/registreCubit/register_cubit.dart';
 import 'package:scholar_chat_app/firebase_options.dart';
 import 'package:scholar_chat_app/screens/chat_screen.dart';
 import 'package:scholar_chat_app/screens/login_screen.dart';
 import 'package:scholar_chat_app/screens/sign_up_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,17 +18,23 @@ void main() async {
 class ScholarChatApp extends StatelessWidget {
   const ScholarChatApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        LoginScreen.id: (context) => LoginScreen(),
-        SignUpScreen.id: (context) => SignUpScreen(),
-        ChatScreen.id: (context) => ChatScreen(),
-      },
-      initialRoute: 'LoginScreen',
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => RegisterCubit()),
+        BlocProvider(create: (context) => ChatCubit()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          LoginScreen.id: (context) => LoginScreen(),
+          SignUpScreen.id: (context) => SignUpScreen(),
+          ChatScreen.id: (context) => ChatScreen(),
+        },
+        initialRoute: 'LoginScreen',
+      ),
     );
   }
 }
