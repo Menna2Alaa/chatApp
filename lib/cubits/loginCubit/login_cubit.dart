@@ -9,8 +9,11 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> signIn({required String email, required String password}) async {
     emit(LoginLoadingState());
     try {
-      UserCredential user = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      /*UserCredential user =*/
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       emit(LoginSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

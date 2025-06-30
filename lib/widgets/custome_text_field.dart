@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class CustomeTextFormField extends StatelessWidget {
@@ -19,6 +21,7 @@ class CustomeTextFormField extends StatelessWidget {
         if (data!.isEmpty) {
           return 'field is required';
         }
+        return null;
       },
       onChanged: onChanged,
       decoration: InputDecoration(

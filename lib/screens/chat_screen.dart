@@ -1,10 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scholar_chat_app/constants.dart';
 import 'package:scholar_chat_app/cubits/chatCubit/chat_cubit.dart';
 import 'package:scholar_chat_app/models/message.dart';
 import 'package:scholar_chat_app/widgets/chat_bubble.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatScreen extends StatelessWidget {
   List<Message> messagesList = [];
